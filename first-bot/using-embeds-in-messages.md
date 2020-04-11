@@ -98,7 +98,7 @@ const embed = new Discord.MessageEmbed()
   /*
    * Blank field, useful to create some space.
    */
-  .addField("/u200B","/u200B")
+  .addField("\u200B","\u200B")
   .addField("Inline Field 3", "You can have a maximum of 25 fields.", true);
  
   message.channel.send(embed);
