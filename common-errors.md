@@ -64,6 +64,15 @@ Discord.js v12 requires atleast node v12.You didn't install node v12 or higher v
 Instead of `.addBlankField()` you can do `.addField("\u200B","\u200B")` which does the same thing.
 
 
+## `AbortError: The user aborted a request.`
+
+### Problem: 
+
+This error usually occurs when a request takes long time to resolve it.
+
+### Solution:
+
+* Increase `restRequestTimeout` value in client constructor(options).
 
 
 
