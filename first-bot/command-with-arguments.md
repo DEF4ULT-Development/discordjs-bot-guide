@@ -175,7 +175,8 @@ if(command === "quote") {
   // I also support "here" as a channelID using this:
   const channel = channelid == "here" ? message.channel : client.channels.cache.get(channelid);
   // I do the same with message ID, which can be "last":
-  const message = messageid === "last" ? msg.channel.messages.last(2)[0] : await channel.messages.get(messageid);
+  const message = messageid === "last" ? msg.channel.messages.cache.get(msg.channel.lastMessageID)
+  : await channel.messages.cache.get(messageid);
   // pretend for a second this is the rest of the function:
   insertInDB(quotename, channel.id, message.id, note.join(" "));
 }
