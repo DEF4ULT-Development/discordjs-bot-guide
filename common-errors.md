@@ -43,3 +43,27 @@ The following trick is a lifesaver, so pay attention: Your code editor is trying
 
 You can check out [Installing and Using a Proper Editor](other-guides/installing-and-using-a-proper-editor.md) to help in at least knowing there are errors _before_ running your bot code.
 
+## `Error: fields.flat is not a function.`
+
+### Problem:
+
+Discord.js v12 requires atleast node v12.You didn't install node v12 or higher version.
+
+### Solution:
+
+* Install node of version 12 or higher in your machine.
+
+## `Error: .addBlankField is not a function`
+
+### Problem:
+
+`.addBankField is defriciated in `discord.js v12`
+
+## Solution:
+
+Instead of `.addBlankField()` you can do `.addField("\u200B","\u200B")` which does the same thing.
+
+
+
+
+
