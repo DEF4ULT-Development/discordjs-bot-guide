@@ -57,7 +57,7 @@ Discord.js v12 requires atleast node v12.You didn't install node v12 or higher v
 
 ### Problem:
 
-`.addBankField is depriciated in `discord.js v12`
+`.addBankField()` is depriciated in `discord.js v12`
 
 ## Solution:
 
