@@ -60,7 +60,7 @@ The official documentation has the wonderful `Message.isMentioned(data)` boolean
 ```javascript
 client.on("message", (message) => {
   if (message.author.id === client.user.id || message.author.bot) return;
-  if (message.isMentioned("YOUR USER ID")) {
+  if (message.mentions.has("YOUR USER ID")) {
       // Additional Code
   }
   let args = message.content.split(" ").slice(1);
@@ -77,7 +77,7 @@ Well the `message` object has `mentions` which has both `everyone` and `roles`, 
 ```javascript
 client.on("message", (message) => {
   if (message.author.id === client.user.id || message.author.bot) return;
-  if (message.isMentioned("YOUR USER ID") || message.mentions.everyone || (message.guild && message.mentions.roles.filter(r => message.guild.member("YOUR USER ID").roles.cache.has(r.id)).size > 0)) {
+  if (message.mentions.as("YOUR USER ID") || message.mentions.everyone || (message.guild && message.mentions.roles.filter(r => message.guild.member("YOUR USER ID").roles.cache.has(r.id)).size > 0)) {
       // Additional Code
   }
   let args = message.content.split(" ").slice(1);
@@ -100,7 +100,7 @@ So far so good, we're almost half way there... We've set up the conditions to ch
 ```javascript
 client.on("message", (message) => {
   if (message.author.id === client.user.id || message.author.bot) return;
-  if (message.isMentioned("YOUR USER ID") || message.mentions.everyone || (message.guild && message.mentions.roles.filter(r => message.guild.member("YOUR USER ID").roles.cache.has(r.id)).size > 0)) {
+  if (message.mentions.has("YOUR USER ID") || message.mentions.everyone || (message.guild && message.mentions.roles.filter(r => message.guild.member("YOUR USER ID").roles.cache.has(r.id)).size > 0)) {
       if (message.author.id === "YOUR USER ID") return;
       // Additional Code
   }
@@ -127,7 +127,7 @@ client.on("ready", () => {
 let prefix = "~";
 client.on("message", (message) => {
   if (message.author.id === client.user.id || message.author.bot) return;
-  if (message.isMentioned("YOUR USER ID") || message.mentions.everyone || (message.guild && message.mentions.roles.filter(r => message.guild.member("YOUR USER ID").roles.cache.has(r.id)).size > 0)) {
+  if (message.mentions.has("YOUR USER ID") || message.mentions.everyone || (message.guild && message.mentions.roles.filter(r => message.guild.member("YOUR USER ID").roles.cache.has(r.id)).size > 0)) {
       if (message.author.id === "YOUR USER ID") return;
       // Additional Code
   }
@@ -164,7 +164,7 @@ client.on("ready", () => {
 let prefix = "~";
 client.on("message", (message) => {
   if (message.author.id === client.user.id || message.author.bot) return;
-  if (message.isMentioned("146048938242211840") || message.mentions.everyone || (message.guild && message.mentions.roles.filter(r => message.guild.member("146048938242211840").roles.cache.has(r.id)).size > 0)) {
+  if (message.mentions.has("146048938242211840") || message.mentions.everyone || (message.guild && message.mentions.roles.filter(r => message.guild.member("146048938242211840").roles.cache.has(r.id)).size > 0)) {
       if (message.author.id === "146048938242211840") return;
       // Additional Code
       mentionHook.send("You were mentioned!");
