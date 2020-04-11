@@ -77,7 +77,7 @@ exports.run = async (client, message, args, level) => { // eslint-disable-line n
       // End the command if the bot cannot find the role on the server.
       if (!role) return message.reply('I can\'t seem to find that role.');
       try {
-        await member.roles.remove.role);
+        await member.roles.remove(role);
         await message.channel.send(`I've removed the ${name} role from ${member.displayName}.`);
       } catch (e) {
         console.log(e);
