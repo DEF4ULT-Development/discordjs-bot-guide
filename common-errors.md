@@ -72,7 +72,7 @@ This error usually occurs when a request takes long time to resolve it.
 
 ### Solution:
 
-* Increase `restRequestTimeout` value in client constructor(options).
+* Increase [restRequestTimeout](https://discord.js.org/#/docs/main/stable/typedef/ClientOptions) value in client constructor(options).
 
 
 
