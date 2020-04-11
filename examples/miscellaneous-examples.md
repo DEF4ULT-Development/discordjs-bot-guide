@@ -202,7 +202,7 @@ if (!member) return message.reply('You need to @mention a user/bot to kick from 
 if (!member.voice.channel) return message.reply('That user/bot isn\'t in a voice channel.');
 
 // Now we set the member's voice channel to null, in other words disconnecting them from the voice channel.
-member.setVoiceChannel(null);
+member.voice.setChannel(null);
 
 // Finally, pass some user response to show it all worked out:
 message.react('👌');
