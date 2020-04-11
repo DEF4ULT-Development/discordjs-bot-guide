@@ -18,10 +18,11 @@ This is the "easy" part once you actually get used to it. It's just like getting
 
 ```javascript
 // get role by ID
-let myRole = message.guild.roles.get("264410914592129025");
+let myRole = message.guild.roles.cache.get("264410914592129025");
 
 // get role by name
-let myRole = message.guild.roles.find(role => role.name === "Moderators");
+let myRole = message.guild.roles.cache
+.find(role => role.name === "Moderators");
 ```
 
 {% hint style="info" %}
@@ -34,7 +35,7 @@ In a `message` handler, you have access to checking the GuildMember class of the
 
 ```javascript
 // assuming role.id is an actual ID of a valid role:
-if(message.member.roles.has(role.id)) {
+if(message.member.roles.cache.has(role.id)) {
   console.log(`Yay, the author of the message has the role!`);
 } else {
   console.log(`Nope, noppers, nadda.`);
@@ -43,7 +44,7 @@ if(message.member.roles.has(role.id)) {
 
 ```javascript
 // Check if they have one of many roles
-if(message.member.roles.some(r=>["Dev", "Mod", "Server Staff", "Proficient"].includes(r.name)) ) {
+if(message.member.roles.cache.some(r=>["Dev", "Mod", "Server Staff", "Proficient"].includes(r.name)) ) {
   // has one of the roles
 } else {
   // has none of the roles
@@ -58,7 +59,7 @@ To grab members and users in different ways see the [FAQ Page](../frequently-ask
 
 ```javascript
 let roleID = "264410914592129025";
-let membersWithRole = message.guild.roles.get(roleID).members;
+let membersWithRole = message.guild.roles.cache.get(roleID).members;
 console.log(`Got ${membersWithRole.size} members with that role.`);
 ```
 
@@ -67,7 +68,7 @@ console.log(`Got ${membersWithRole.size} members with that role.`);
 Alright, now that you have roles, you probably want to add a member to a role. Simple enough! Discord.js provides 2 handy methods to add, and remove, a role. Let's look at them!
 
 ```javascript
-let role = message.guild.roles.find(r => r.name === "Team Mystic");
+let role = message.guild.roles.cache.find(r => r.name === "Team Mystic");
 
 // Let's pretend you mentioned the user you want to add a role to (!addrole @user Role Name):
 let member = message.mentions.members.first();
@@ -75,17 +76,18 @@ let member = message.mentions.members.first();
 // or the person who made the command: let member = message.member;
 
 // Add the role!
-member.addRole(role).catch(console.error);
+member.roles.add(role).catch(console.error);
 
 // Remove a role!
-member.removeRole(role).catch(console.error);
+member.roles.remove(role).catch(console.error);
 ```
 
 Alright I feel like I have to add a _little_ precision here on implementation:
 
 * You can **not** add or remove a role that is higher than the bot's. This should be obvious.
 * The bot requires `MANAGE_ROLES` permissions for this. You can check for it using the code further down this page.
-* Because of global rate limits, you cannot do 2 role "actions" immediately one after the other. The first action will work, the second will not. You can go around that by using `<GuildMember>.setRoles([array, of, roles])`. This will overwrite all existing roles and only apply the ones in the array so be careful with it.
+* You can add multiple roles at once by using `<GuildMember>.roles.add(["role","role"])`.
+*`<GuildMember>.roles.set([array, of, roles])`. This will overwrite all existing roles and only apply the ones in the array so be careful with it.
 
 ## Permission code
 
